@@ -1,0 +1,5 @@
+/Converters/Inputs/*
+/Converters/GeoJSONFiles/*
+/Converters/RadarFiles/*
+/venv/
+/.idea/
