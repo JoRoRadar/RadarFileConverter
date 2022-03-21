@@ -35,7 +35,7 @@ class GeoJsonConverter:
     filePath = ""
     fileName = ""
 
-    outputDirectory = "./RadarFiles/"
+    outputDirectory = "./Converters/RadarFiles/"
     filePathRegex = "\/([^\/]+)\.geojson"
 
     isValidFile = False
@@ -98,7 +98,7 @@ class GeoJsonConverter:
         self.fix_single_quotes()
 
     def fix_single_quotes(self):
-        subprocess.call(['sh', './quote_fixer.sh', self.outputDirectory + self.fileName + ".csv"])
+        subprocess.call(['sh', './Converters/Utilities/quote_fixer.sh', self.outputDirectory + self.fileName + ".csv"])
 
     def process_geojson(self, currentGeoJSON, properties=None):
         geoType = currentGeoJSON["type"]

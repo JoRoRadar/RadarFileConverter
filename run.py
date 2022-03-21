@@ -1,4 +1,4 @@
-from geojson_to_radar import GeoJsonConverter
+from Converters.geojson_to_radar import GeoJsonConverter
 
 # Params
 

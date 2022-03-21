@@ -38,6 +38,21 @@ This is the main file to run to convert GeoJSON files into Radar CSV. There are 
 A simple file for converting Shapefiles to GeoJSON files using the _geopandas_ library. We also convert/specify the coordinate system being used to the standard latitude/longitude system that Radar uses.  
 The current read path looks for a file in the _Inputs_ file directory and outputs to the _GeoJSONFiles_ directory.
 
+####GeoJSON Types
+GoeJSON has multiple types of geometries that don't all have an analogous in Radar. Below is specified the types and the conversion done.  
+- Point : circle
+- LineString : Not Supported
+- Polygon : polygon
+- MultiPoint : _multiple_ circle
+- MultiLineString : Not Supported
+- MultiPolygon : _multiple_ polygon
+- GeometryCollection : Not Supported
+
+#### Warnings
+**(1)** LineString, MultiLineString, and Geometry Collection are not supported simply due to either complexity or not a direct analogy in Radar.  
+**(2)** Polygons can have holes in them in GeoJSON. This is not supported and will be ignored.  
+**(3)** Due to _Antimeridian Cutting_ that GeoJSON uses, this will almost garantee issues in the resulting Radar Geofence. This has not been solved for.
+
 ### qeojson_to_radar.py
 Converts a GeoJSON file to a Radar CSV file ready to import.  
 There is no specified path prefix for the GeoJSON file. The output CSV will be placed in the _RadarFiles_ directory.
@@ -53,3 +68,4 @@ Python doesn't allow for easy conversion between single and double quotes on str
 - Use a GUI file picker
 - Provide helpers for picking GeoJSON property keys.
 - Automatially identify file type and run needed processes.
+- Radar's CSV import requirements is currently changing so will likely need to support that.
